@@ -157,13 +157,4 @@ class SinglyLinkedList {
 }
 
 
-const myList = new SinglyLinkedList();
-myList.push('a');
-myList.push('b');
-myList.push('c');
-myList.push('d');
-myList.pop();
-myList.push('d');
-console.log(myList);
-
 
