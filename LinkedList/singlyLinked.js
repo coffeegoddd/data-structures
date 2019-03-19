@@ -22,14 +22,12 @@ class SinglyLinkedList {
       this.tail = node;
       this.length += 1;
       return this;
-    } else {
-      this.tail.next = node;
-      this.tail = node;
-      this.length += 1;
-      return this;
     }
+    this.tail.next = node;
+    this.tail = node;
+    this.length += 1;
+    return this;
   }
-
   pop() { // O(n)
     if (!this.head) return;
     if (this.length === 1) {
@@ -50,7 +48,6 @@ class SinglyLinkedList {
     this.length -= 1;
     return curr;
   }
-
   shift () { // O(1)
     if (!this.head) return;
     if (this.length === 1) {
@@ -65,7 +62,6 @@ class SinglyLinkedList {
     this.length -= 1;
     return oldHead;
   }
-
   unshift (val) { // O(1)
     const newHead = new Node(val);
     if (!this.head) {
@@ -79,7 +75,6 @@ class SinglyLinkedList {
     this.length += 1;
     return this;
   }
-
   traverse (cb) { // O(n)
     let curr = this.head;
     while(curr) {
@@ -87,7 +82,6 @@ class SinglyLinkedList {
       curr = curr.next;
     }
   }
-
   get (index) { // O(n)
     if (index < 0 || index >= this.length) return;
     let curr = this.head;
@@ -98,14 +92,12 @@ class SinglyLinkedList {
     }
     return curr;
   }
-
   set (index, val) { // O(n)
     const curr = this.get(index);
     if (!curr) return false;
     curr.val = val;
     return true;
   }
-
   insert (index, val) { // O(n)
     if (index < 0 || index > this.length) return false;
     if (index === 0) return !!this.unshift(val);
@@ -118,7 +110,6 @@ class SinglyLinkedList {
     this.length += 1;
     return true;
   }
-
   remove (index) { // O(n)
     if (index < 0 || index >= this.length) return;
     if (index === 0) return this.shift();
@@ -129,7 +120,6 @@ class SinglyLinkedList {
     this.length -= 1;
     return oldNode;
   }
-
   print() { // O(n)
     const arr = [];
     let curr = this.head;
@@ -139,7 +129,6 @@ class SinglyLinkedList {
     }
     console.log(arr);
   }
-
   reverse () { // O(n)
     let node = this.head;
     this.head = this.tail;
@@ -156,5 +145,4 @@ class SinglyLinkedList {
   }
 }
 
-
-
+module.exports = SinglyLinkedList;
