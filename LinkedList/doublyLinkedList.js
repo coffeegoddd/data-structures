@@ -128,6 +128,22 @@ class DoublyLinkedList {
     this.length -= 1;
     return node;
   }
+  reverse() {
+    let prev = null;
+    let curr = this.head;
+    let next;
+    this.head = this.tail;
+    this.head.prev = null;
+    this.tail = curr;
+    while (curr) {
+      next = curr.next;
+      curr.next = prev;
+      if (prev) prev.prev = curr;
+      prev = curr;
+      curr = next;
+    }
+    return this;
+  }
 }
 
 module.exports = DoublyLinkedList;
