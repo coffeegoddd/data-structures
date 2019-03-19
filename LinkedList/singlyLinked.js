@@ -15,7 +15,7 @@ class SinglyLinkedList {
     this.tail = null;
     this.length = 0;
   }
-  push(val) {
+  push(val) { // O(1)
     const node = new Node(val);
     if (!this.head) {
       this.head = node;
@@ -30,7 +30,7 @@ class SinglyLinkedList {
     }
   }
 
-  pop() {
+  pop() { // O(n)
     if (!this.head) return;
     if (this.length === 1) {
       const saved = this.head;
@@ -51,7 +51,7 @@ class SinglyLinkedList {
     return curr;
   }
 
-  shift () {
+  shift () { // O(1)
     if (!this.head) return;
     if (this.length === 1) {
       const oldHead = this.head;
@@ -66,7 +66,7 @@ class SinglyLinkedList {
     return oldHead;
   }
 
-  unshift (val) {
+  unshift (val) { // O(1)
     const newHead = new Node(val);
     if (!this.head) {
       this.head = newHead;
@@ -80,7 +80,7 @@ class SinglyLinkedList {
     return this;
   }
 
-  traverse (cb) {
+  traverse (cb) { // O(n)
     let curr = this.head;
     while(curr) {
       cb(curr);
@@ -88,7 +88,7 @@ class SinglyLinkedList {
     }
   }
 
-  get (index) {
+  get (index) { // O(n)
     if (index < 0 || index >= this.length) return;
     let curr = this.head;
     let count = 0;
@@ -99,14 +99,14 @@ class SinglyLinkedList {
     return curr;
   }
 
-  set (index, val) {
+  set (index, val) { // O(n)
     const curr = this.get(index);
     if (!curr) return false;
     curr.val = val;
     return true;
   }
 
-  insert (index, val) {
+  insert (index, val) { // O(n)
     if (index < 0 || index > this.length) return false;
     if (index === 0) return !!this.unshift(val);
     if (index === this.length) return !!this.push(val);
@@ -119,7 +119,7 @@ class SinglyLinkedList {
     return true;
   }
 
-  remove (index) {
+  remove (index) { // O(n)
     if (index < 0 || index >= this.length) return;
     if (index === 0) return this.shift();
     if (index === this.length - 1) return this.pop();
@@ -130,7 +130,7 @@ class SinglyLinkedList {
     return oldNode;
   }
 
-  print() {
+  print() { // O(n)
     const arr = [];
     let curr = this.head;
     while (curr) {
@@ -140,7 +140,7 @@ class SinglyLinkedList {
     console.log(arr);
   }
 
-  reverse () {
+  reverse () { // O(n)
     let node = this.head;
     this.head = this.tail;
     this.tail = node;
